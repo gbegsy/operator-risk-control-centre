@@ -45,7 +45,7 @@ async function run(){
  assert.equal(E.indicatorState({...seed.indicators[0],value:0,observed:'2026-10-15'},'2026-10-16'),'Within trigger');
  assert.equal(E.scenario(seed.scenario).draw,25.75);assert.equal(E.scenario(seed.scenario).bufferGap,14.25);
  assert.ok(E.csvCell(' =SUM(A1)').startsWith('"\''));
- for(const [id,title] of [['overview','Risk Control Centre'],['strategy','The business behind the risks'],['risks','Understand the exposure'],['assurance','Control assurance'],['timeline','The timing of exposure'],['scenarios','Cumulative risk'],['cyber','Cyber governance'],['board','The board view'],['basis','Using the centre'],['imports','Data drop & review'],['evidence','Operational evidence'],['deviations','Operational deviations']]){h.click('',{nav:id});assert.ok(h.html().includes(title),'renders '+id);assert.ok(!h.html().includes('undefined'),'no undefined in '+id);}
+ for(const [id,title] of [['overview','Risk Control Centre'],['strategy','The operating plan behind the risks'],['risks','Understand the exposure'],['assurance','Control assurance'],['timeline','The timing of exposure'],['scenarios','Cumulative risk'],['cyber','Cyber governance'],['board','The board view'],['basis','Using the centre'],['imports','Data drop & review'],['evidence','Operational evidence'],['deviations','Operational deviations']]){h.click('',{nav:id});assert.ok(h.html().includes(title),'renders '+id);assert.ok(!h.html().includes('undefined'),'no undefined in '+id);}
  h.click('',{nav:'assurance'});h.click('',{tab:'indicators'});assert.ok(h.html().includes('Not recorded'));
  h.click('',{nav:'board'});h.click('freeze-board');let saved=h.saved();assert.equal(saved.snapshots.length,1);E.validate(saved);
  const frozenTitle=saved.snapshots[0].risks[0].title;
