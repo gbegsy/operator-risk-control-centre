@@ -71,10 +71,10 @@ const events=[
 {id:'E10',title:'Post-campaign learning and reforecast',start:'2027-09-01',end:'2027-09-30',type:'Proposed',lane:'Finance',status:'Planned',hub:'All hubs',risks:['R02','R04','R05','R07'],source:'',detail:'Proposed checkpoint to verify delivered value, capture learning and refresh the risk and cash outlook.'}
 ];
 // The source matrix is native to cyber risk; enterprise extension remains proposed.
-const scale={1:1,2:2,3:4,4:6,5:8};
-risks.forEach(r=>{for(const k of ['il','ii','rl','ri','tl','ti'])r[k]=scale[r[k]];delete r.appetite;r.appetiteText=r.appetiteText.replace('and a score above 12','and the agreed colour-band triggers');Object.assign(r,{framework:r.id==='R08'?'DEMO-CYBER cyber':'Proposed enterprise extension',financial:r.ri,operational:r.ri,regulatory:r.ri,reputation:r.ri,appetiteBand:'Light Blue',treatment:'Mitigate',acceptor:'',acceptedDate:'',approvalRef:'',seniorApprover:'',seniorDate:'',seniorApprovalRef:'',service:'To confirm',serviceRef:'',frequency:null,loss:null,lossBasis:'Not quantified; annual occurrence frequency and loss-per-event require evidence.'});});
-Object.assign(risks.find(r=>r.id==='R08'),{il:7,ii:7,rl:5,ri:5,tl:3,ti:3,financial:5,operational:5,regulatory:4,reputation:5,appetiteText:'DEMO-CYBER sets colour-based treatment. Senior management approves cyber appetite; the example appetite band here is not an approved Operator position.'});
-events.push({id:'E11',title:'DEMO-CYBER next document review due',start:'2027-01-24',end:'2027-01-24',type:'Proposed',lane:'Governance',status:'Planned',hub:'Corporate',risks:['R08'],source:'OMS',detail:'Illustrative document review checkpoint. Review ownership: Cyber Security Manager; approver: Head of IT, Digital & Data. Confirm the controlled copy remains current.'});
+const scale={1:1,2:2,3:3,4:4,5:5};
+risks.forEach(r=>{for(const k of ['il','ii','rl','ri','tl','ti'])r[k]=scale[r[k]];delete r.appetite;r.appetiteText=r.appetiteText.replace('and a score above 12','and the agreed colour-band triggers');Object.assign(r,{framework:r.id==='R08'?'Generic cyber':'Generic enterprise',financial:r.ri,operational:r.ri,regulatory:r.ri,reputation:r.ri,appetiteBand:'Moderate',treatment:'Mitigate',acceptor:'',acceptedDate:'',approvalRef:'',seniorApprover:'',seniorDate:'',seniorApprovalRef:'',service:'To confirm',serviceRef:'',frequency:null,loss:null,lossBasis:'Not quantified; annual occurrence frequency and loss-per-event require evidence.'});});
+Object.assign(risks.find(r=>r.id==='R08'),{il:5,ii:5,rl:3,ri:4,tl:2,ti:3,financial:4,operational:4,regulatory:3,reputation:4,appetiteText:'Generic 5×5 demonstration. Proposed appetite is Moderate; actual criteria and decision rights require approval.'});
+events.push({id:'E11',title:'Generic cyber guidance next document review due',start:'2027-01-24',end:'2027-01-24',type:'Proposed',lane:'Governance',status:'Planned',hub:'Corporate',risks:['R08'],source:'OMS',detail:'Illustrative document review checkpoint. Review ownership: Cyber Security Manager; approver: Head of IT, Digital & Data. Confirm the controlled copy remains current.'});
 const indicators=[
 {id:'K01',title:'Overdue safety-critical maintenance (%)',risk:'R01',owner:'Technical authority',value:null,threshold:0,direction:'Above',unit:'%',observed:'',basis:'Proposed',note:'Leading indicator: agree denominator, exclusions and escalation for each impaired barrier.'},
 {id:'K02',title:'Unplanned production loss against plan (%)',risk:'R02',owner:'Asset leadership',value:null,threshold:5,direction:'Above',unit:'%',observed:'',basis:'Proposed',note:'Outcome indicator: reconcile loss accounting to the approved production plan; 5% is an illustrative trigger.'},
@@ -83,6 +83,24 @@ const indicators=[
 {id:'K05',title:'Uncovered critical roles',risk:'R07',owner:'Functional leadership',value:null,threshold:0,direction:'Above',unit:'count',observed:'',basis:'Proposed',note:'Leading indicator: a critical role has neither a competent incumbent nor an available authorised deputy.'},
 {id:'K06',title:'Critical restoration tests overdue',risk:'R08',owner:'IT leadership',value:null,threshold:0,direction:'Above',unit:'count',observed:'',basis:'Proposed',note:'Leading indicator: count overdue end-to-end restore tests for business-critical services.'}
 ];
-indicators.push({id:'K07',title:'Critical CVEs past remediation SLA (%)',risk:'R08',owner:'Information Security Team',value:null,threshold:0,direction:'Above',unit:'%',observed:'',basis:'Proposed',note:'DEMO-CYBER quarterly measure: CVSS >=9.0 vulnerabilities on essential IT and IT/OT boundary systems overdue against the defined SLA. Trigger of zero is proposed.'},{id:'K08',title:'Applicable cyber reporting controls implemented (%)',risk:'R08',owner:'Information Security Team',value:null,threshold:100,direction:'Below',unit:'%',observed:'',basis:'Proposed',note:'Map obligations and test reporting readiness. The standard references NIS2, including a 72-hour protocol; applicability must be confirmed for each entity and jurisdiction, not assumed.'});
-g.RCC_SEED={version:2,contextDate:'2026-10-16',sources,objectives,hubs,risks,controls,actions,events,indicators,oras:[],findings:[],indicatorHistory:[],imports:[],reports:[],deviationHistory:[],snapshots:[],audit:[],board:{},scenario:{name:'Combined outage and delivery stress',production:15000,days:30,margin:35,extraCapex:10,availableCash:80,buffer:40}};
+indicators.push({id:'K07',title:'Critical CVEs past remediation SLA (%)',risk:'R08',owner:'Information Security Team',value:null,threshold:0,direction:'Above',unit:'%',observed:'',basis:'Proposed',note:'Generic cyber guidance quarterly measure: CVSS >=9.0 vulnerabilities on essential IT and IT/OT boundary systems overdue against the defined SLA. Trigger of zero is proposed.'},{id:'K08',title:'Applicable cyber reporting controls implemented (%)',risk:'R08',owner:'Information Security Team',value:null,threshold:100,direction:'Below',unit:'%',observed:'',basis:'Proposed',note:'Map obligations and test reporting readiness. The standard references NIS2, including a 72-hour protocol; applicability must be confirmed for each entity and jurisdiction, not assumed.'});
+// Fresh synthetic assessments against the generic 5x5 criteria; no conversion of legacy ratings.
+const genericRatings={
+ R01:[4,5,2,5,1,5,'Moderate',[4,5,5,4]],
+ R02:[5,4,3,4,2,4,'Moderate',[4,4,2,3]],
+ R03:[4,4,3,4,2,4,'Moderate',[4,3,3,3]],
+ R04:[4,5,3,5,1,5,'Moderate',[5,4,3,4]],
+ R05:[4,4,3,4,2,4,'Moderate',[4,3,2,3]],
+ R06:[4,3,2,3,1,3,'Low',[2,2,3,3]],
+ R07:[4,4,3,4,2,4,'Moderate',[3,4,3,3]],
+ R08:[4,5,3,5,1,5,'Moderate',[4,5,4,4]],
+ R09:[4,3,3,3,2,3,'Moderate',[3,2,3,2]],
+ R10:[4,4,2,4,1,4,'Moderate',[4,3,3,3]],
+ R11:[4,3,2,3,1,3,'Moderate',[3,3,2,2]],
+ R12:[3,4,2,4,1,4,'Moderate',[3,3,4,3]],
+ R13:[3,3,2,3,1,3,'Moderate',[3,3,2,2]],
+ R14:[4,4,3,4,2,4,'Moderate',[3,4,3,3]]
+};
+risks.forEach(r=>{const a=genericRatings[r.id];Object.assign(r,{il:a[0],ii:a[1],rl:a[2],ri:a[3],tl:a[4],ti:a[5],appetiteBand:a[6],financial:a[7][0],operational:a[7][1],regulatory:a[7][2],reputation:a[7][3],framework:r.id==='R08'?'Generic cyber':'Generic enterprise',basis:'Illustrative 5x5 assessment',validated:false,updated:'2026-10-20',appetiteText:'Proposed demonstration appetite: '+a[6]+'. Evaluate the credible consequence and evidence separately; a numeric position never grants acceptance or authority to operate.'});});
+g.RCC_SEED={version:3,contextDate:'2026-10-16',sources,objectives,hubs,risks,controls,actions,events,indicators,oras:[],findings:[],indicatorHistory:[],imports:[],reports:[],deviationHistory:[],snapshots:[],audit:[],governance:{},board:{},scenario:{name:'Combined outage and delivery stress',production:15000,days:30,margin:35,extraCapex:10,availableCash:80,buffer:40}};
 })(typeof window!=='undefined'?window:globalThis);

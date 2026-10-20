@@ -25,3 +25,12 @@ Run `node checks.cjs`, `node asset-checks.cjs`, `node leadership-checks.cjs`, `n
 The same `docs/` directory can be deployed to Azure Static Web Apps with no build step. Authentication and a shared database can be added separately.
 
 Third-party PDF.js and JSZip licence files are retained in `docs/vendor/`.
+
+## Independent visual and risk framework
+
+Graphite, warm white and copper branding. Generic 5×5 scoring: impact × likelihood; Low 1–4, Moderate 5–9, High 10–16, Critical 20–25 (reachable products). All 14 risk assessments are fresh synthetic examples with independently stated domains, targets and proposed appetite. They are not approved operating judgements.
+
+Version-3 backups only: earlier 8×8 data is deliberately rejected rather than silently reinterpreted. Previous browser records remain under the previous storage key. Export an older version before attempting a separately reviewed migration.
+
+## Main Market governance readiness
+Seven editable evidence workstreams connect ERM, material controls, remediation and annual board reporting. Based on FRC UK Corporate Governance Code 2024, checked 20 October 2026. Scope and compliance remain unconfirmed. Status is an evidence tracker, not certification. Governance records are captured in backups and frozen reports.
