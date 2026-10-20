@@ -12,13 +12,13 @@ Select **Settings → Pages → Deploy from a branch → main → /docs → Save
 
 ## Reporting views
 
-Start with **Asset review pack → Asset Bravo → Monthly board output**. Four fictional assets show risks, critical controls, evidence, actions and escalation. The board view includes an asset summary and decisions required. Word-compatible export and print/save PDF are available.
+Start with **Asset review pack → Asset Bravo → Executive leadership → Board oversight**. Four fictional assets show risks, critical controls, evidence, actions and escalation. The executive pack covers treatment, resources and cross-business intervention. The board opens with an oversight summary covering appetite, material exposure, assurance confidence and reserved matters; supporting detail is expandable. Word-compatible export and print/save PDF are available.
 
 Changes are saved in each browser, not in a shared database. Export a JSON backup before changing browser or hosting origin. Previously saved browser records do not transfer automatically between website addresses.
 
 ## Validation
 
-Run `node checks.cjs`, `node asset-checks.cjs`, `node analysis-checks.cjs`, `node matrix-checks.cjs`, `node od-checks.cjs` and `node import-checks.cjs` from the repository root. Browser layout and actual downloads require browser verification.
+Run `node checks.cjs`, `node asset-checks.cjs`, `node leadership-checks.cjs`, `node analysis-checks.cjs`, `node matrix-checks.cjs`, `node od-checks.cjs` and `node import-checks.cjs` from the repository root. Browser layout and actual downloads require browser verification.
 
 ## Future Azure hosting
 
